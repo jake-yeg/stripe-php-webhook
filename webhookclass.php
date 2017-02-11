@@ -397,6 +397,8 @@ class Webhook
         //0 corresponds to no logging.
         if($this->config['log_type'] === 1){
             // Text file logging
+            $data = '[' . date("H-i-s") . ']: Event Type: ' . $this->event->type . ', Event ID: ' . $this->event->id . PHP_EOL;
+            file_put_contents($this->config['log_path'] . date("d-m-Y") . '.txt', $data, FILE_APPEND);
         }else if($this->config['log_type'] === 2){
             // Database logging
         }
