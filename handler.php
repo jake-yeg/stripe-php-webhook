@@ -2,10 +2,9 @@
 /*
  *  Set path to stripe lib
  */
-require_once('/path/to/stripe/init.php');
-
 require_once('webhook_config.php');
 require_once('webhookclass.php');
+require_once($config['stripe_path']);
 
 \Stripe\Stripe::setApiKey($config['api_key']);
 

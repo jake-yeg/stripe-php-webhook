@@ -6,6 +6,11 @@
 $config['api_key'] = '';
 
 /*
+ * Path to stripe lib
+ */
+$config['stripe_path'] = '/path/to/stripe/init.php';
+
+/*
  * Debug settings:
  * To enable set to 1
  * To disable set to 0
