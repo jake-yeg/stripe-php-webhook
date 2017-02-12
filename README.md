@@ -8,10 +8,15 @@ SETUP:
 3*Optional*) If you plan on using Database logging run the following query:
 
 CREATE TABLE IF NOT EXISTS webhook_logs (
+
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  
   event_id VARCHAR(255) NOT NULL,
+  
   event_type VARCHAR(255) NOT NULL,
+  
   date DEFAULT getdate()
+  
 );
 
 4) In your stripe dashboard(https://dashboard.stripe.com/account/webhooks), click ADD ENDPOINT, and set it to the URL for handler.php
