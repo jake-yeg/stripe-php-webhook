@@ -401,6 +401,10 @@ class Webhook
             file_put_contents($this->config['log_path'] . date("d-m-Y") . '.txt', $data, FILE_APPEND);
         }else if($this->config['log_type'] === 2){
             // Database logging
+            $stmt = $this->db->prepare("INSERT INTO webhook_logs (event_id, event_type) VALUES (:event_id, :event_type)");
+            $stmt->bindParam(':event_id',$this->event->id);
+            $stmt->bindParam(':event_type',$this->event->type);
+            $stmt->execute();
         }
 
         // Send email notice for certain event typs.
