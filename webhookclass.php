@@ -5,6 +5,7 @@ class Webhook
     private $config;
     private $db;
     private $event;
+    private $customer;
 
     function __construct($config, $event){
         $this->config = $config;
@@ -387,6 +388,10 @@ class Webhook
      */
     public function ping(){
         http_response_code(200);
+    }
+
+    private function getCustomer($customer_id){
+        $this->customer = \Stripe\Customer::retrieve($customer_id);
     }
 
     private function log(){
