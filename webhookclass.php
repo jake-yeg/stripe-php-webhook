@@ -408,7 +408,7 @@ class Webhook
         }
 
         // Send email notice for certain event typs.
-        if(in_array($this->event-type, $this->config['email_events'])){
+        if(in_array($this->event->type, $this->config['email_events'])){
             require_once($this->config['phpmailer']);
 
             $mail = new PHPMailer;
