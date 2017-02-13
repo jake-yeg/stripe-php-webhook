@@ -28,10 +28,12 @@ if(in_array($event_type, $event_array)) {
     $isNewEvent = $webhook->isNewEvent($event->id);
 
     if($isNewEvent === false){
+        http_response_code(200);
         exit;
     }else if($isNewEvent === true){
         $webhook->{$event_type}();
     }
 }else{
+    http_response_code(200);
     exit;
 }
