@@ -24,8 +24,11 @@ if(in_array($event_type, $event_array)) {
     $event_type = str_replace('.', '_', $event_type);
 
     $webhook = new Webhook($config, $event);
-
-    $webhook->{$event_type}();
+    if($webhook->isDuplicate($event->id) === false){
+        exit;
+    }else {
+        $webhook->{$event_type}();
+    }
 }else{
     exit;
 }

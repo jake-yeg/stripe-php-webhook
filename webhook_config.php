@@ -21,14 +21,11 @@ $config['debug'] = 0;
 /*
  * Log settings:
  * To disable set to 0
- * Enable txt file logging set to 1
- * Enable DB logging set to 2
- * If you enable DB logging, you'll need to edit the log() function inside of webhookclass.php
- * to log properly.
+ * Enable DB logging set to 1
  */
 
 $config['log_type'] = 0;
-$config['log_path'] = '/path/to/logs/';
+
 /*
  *  THIS SECTION REQUIRES THE PHPMAILER LIBRARY FOUND HERE:
  *  https://github.com/PHPMailer/PHPMailer/

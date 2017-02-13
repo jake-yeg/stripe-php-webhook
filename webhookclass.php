@@ -390,6 +390,19 @@ class Webhook
         http_response_code(200);
     }
 
+    public function isDuplicate($event_id){
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM webhook_logs WHERE event_id = :event_id");
+        $stmt->bindParam(':event_id', $event_id);
+        $stmt->execute();
+
+        $rows = $stmt->fetchColumn();
+        if($rows > 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     private function getCustomer($customer_id){
         $this->customer = \Stripe\Customer::retrieve($customer_id);
     }
@@ -401,10 +414,6 @@ class Webhook
         }
         //0 corresponds to no logging.
         if($this->config['log_type'] === 1){
-            // Text file logging
-            $data = '[' . date("H-i-s") . ']: Event Type: ' . $this->event->type . ', Event ID: ' . $this->event->id . PHP_EOL;
-            file_put_contents($this->config['log_path'] . date("d-m-Y") . '.txt', $data, FILE_APPEND);
-        }else if($this->config['log_type'] === 2){
             // Database logging
             $stmt = $this->db->prepare("INSERT INTO webhook_logs (event_id, event_type) VALUES (:event_id, :event_type)");
             $stmt->bindParam(':event_id',$this->event->id);
