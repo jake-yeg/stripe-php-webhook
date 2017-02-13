@@ -390,7 +390,7 @@ class Webhook
         http_response_code(200);
     }
 
-    public function isDuplicate($event_id){
+    public function isNewEvent($event_id){
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM webhook_logs WHERE event_id = :event_id");
         $stmt->bindParam(':event_id', $event_id);
         $stmt->execute();
