@@ -1,17 +1,18 @@
 # stripe-webhook
 
 SETUP:
+
 1) Place the 3 files into the same folder in your desired web directory.
 
 2) Edit webhook_config.php as desired
 
-3*Optional*) If you plan on using Database logging run the following query:
+3) Add the logs table to database:
 
 CREATE TABLE IF NOT EXISTS webhook_logs (
 
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
   
-  event_id VARCHAR(255) NOT NULL,
+  event_id VARCHAR(255) UNIQUE,
   
   event_type VARCHAR(255) NOT NULL,
   
