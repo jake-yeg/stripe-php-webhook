@@ -5,6 +5,7 @@
 require_once('webhook_config.php');
 require_once('webhookclass.php');
 require_once($config['stripe_path']);
+require_once('eventarray.php');
 
 \Stripe\Stripe::setApiKey($config['api_key']);
 
@@ -19,8 +20,12 @@ $event_type = $event->type;
 /*
  * replace '.' in the event type with _ to suit function naming conventions.
  */
-$event_type = str_replace('.', '_', $event_type);
+if(in_array($event_type, $event_array)) {
+    $event_type = str_replace('.', '_', $event_type);
 
-$webhook = new Webhook($config,$event);
+    $webhook = new Webhook($config, $event);
 
-$webhook->{$event_type}();
+    $webhook->{$event_type}();
+}else{
+    exit;
+}
