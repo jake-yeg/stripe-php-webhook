@@ -12,375 +12,453 @@ class Webhook
         $this->db = $config['db'];
         $this->event = $event;
     }
+    /*
+     * Purpose of the flush, is to send the response code back to Stripe right away
+     * to prevent their request from timing out, and retries being sent.
+     */
 
     public function account_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function account_application_deauthorized(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function account_external_account_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function account_external_account_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function account_external_account_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function application_fee_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function application_fee_refunded(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function application_fee_refund_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function balance_available(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function bitcoin_receiver_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function bitcoin_receiver_filled(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function bitcoin_receiver_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function bitcoin_receiver_transaction_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_captured(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_failed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_pending(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_refunded(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_succeeded(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_dispute_closed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_dispute_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_dispute_funds_reinstated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_dispute_funds_withdrawn(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function charge_dispute_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function coupon_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function coupon_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function coupon_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_discount_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_discount_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_discount_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_source_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_source_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_source_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_subscription_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_subscription_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_subscription_trial_will_end(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function customer_subscription_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoice_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoice_payment_failed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoice_payment_succeeded(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoice_sent(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoice_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoiceitem_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoiceitem_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function invoiceitem_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function order_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function order_payment_failed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function order_payment_succeeded(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function order_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function order_return_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function plan_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function plan_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function plan_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function product_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function product_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function product_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function review_closed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function review_opened(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function sku_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function sku_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function sku_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function source_canceled(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function source_chargeable(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function source_failed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function source_transaction_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_created(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_deleted(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_failed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_paid(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_reversed(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function transfer_updated(){
         $this->log();
         http_response_code(200);
+        ob_end_flush();
     }
 
     /*
@@ -388,6 +466,7 @@ class Webhook
      */
     public function ping(){
         http_response_code(200);
+        ob_end_flush();
     }
 
     public function isNewEvent($event_id){

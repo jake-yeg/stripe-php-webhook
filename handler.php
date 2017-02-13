@@ -31,6 +31,7 @@ if(in_array($event_type, $event_array)) {
         http_response_code(200);
         exit;
     }else if($isNewEvent === true){
+        ob_start();
         $webhook->{$event_type}();
     }
 }else{
