@@ -391,6 +391,10 @@ class Webhook
     }
 
     public function isNewEvent($event_id){
+        if($this->config['log_type'] !== 1){
+            //Not logging events for some reason, so no way to tell if duplicate.
+            return true;
+        }
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM webhook_logs WHERE event_id = :event_id");
         $stmt->bindParam(':event_id', $event_id);
         $stmt->execute();
