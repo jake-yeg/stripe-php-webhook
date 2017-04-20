@@ -56,6 +56,11 @@ $event_array = array(
     'order.payment_succeeded',
     'order.updated',
     'order_return.created',
+    'payout.canceled',
+    'payout.created',
+    'payout.updated',
+    'payout.paid',
+    'payout.failed'
     'plan.created',
     'plan.deleted',
     'plan.updated',

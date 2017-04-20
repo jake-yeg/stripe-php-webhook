@@ -335,6 +335,43 @@ class Webhook
         ob_end_flush();
     }
 
+    public function payout.paid(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
+    public function payout.failed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
+    public function payout.canceled(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
+    public function payout.created(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
+    public function payout.updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
+
+    public function bitcoin_receiver_updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+
     public function plan_created(){
         $this->log();
         http_response_code(200);
