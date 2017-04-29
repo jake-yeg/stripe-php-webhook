@@ -1,81 +1,84 @@
 <?php
 
-/*
- * Stripe API Key;
- */
-$config['api_key'] = '';
+return [
 
-/*
- * Path to stripe lib
- */
-$config['stripe_path'] = '/path/to/stripe/init.php';
+    /*
+     * Stripe API Key,
+     */
+    'api_key' => '',
 
-/*
- * Debug settings:
- * To enable set to 1
- * To disable set to 0
- * Disabled by default
- */
-$config['debug'] = 0;
+    /*
+     * Path to stripe lib
+     */
+    'stripe_path' => '/path/to/stripe/init.php',
 
-/*
- * Log settings:
- * To disable set to 0
- * Enable DB logging set to 1
- */
+    /*
+     * Debug settings:
+     * To enable set to 1
+     * To disable set to 0
+     * Disabled by default
+     */
+    'debug' => 0,
 
-$config['log_type'] = 0;
+    /*
+     * Log settings:
+     * To disable set to 0
+     * Enable DB logging set to 1
+     */
 
-/*
- *  THIS SECTION REQUIRES THE PHPMAILER LIBRARY FOUND HERE:
- *  https://github.com/PHPMailer/PHPMailer/
- *
- * If you wish for email notifications for certain events add the event type
- * into the following array
- *  EXAMPLE:
- * $config['email_events'] = array(
- *   'invoice.payment_succeeded',
- *   'invoice.payment_failed'
- *  );
- *
- * Emails will be sent for those events.
- */
-$config['phpmailer'] = 'path/to/PHPMailerAutoload.php';
+    'log_type' => 0,
 
-$config['email_events'] = array(
-    ''
-);
+    /*
+     *  THIS SECTION REQUIRES THE PHPMAILER LIBRARY FOUND HERE:
+     *  https://github.com/PHPMailer/PHPMailer/
+     *
+     * If you wish for email notifications for certain events add the event type
+     * into the following array
+     *  EXAMPLE:
+     * 'email_events' => [
+     *   'invoice.payment_succeeded',
+     *   'invoice.payment_failed'
+     *  ],
+     *
+     * Emails will be sent for those events.
+     */
+    'phpmailer' => 'path/to/PHPMailerAutoload.php',
 
-/*
- * EMAIL settings.
- */
+    'email_events' => [
 
-/*
- * SMTP disabled by default. Set to 1 to enable.
- */
-$config['email']['use_smtp'] = 0;
-/*
- * SMTP settings
- */
+    ],
 
-$config['email']['smtp_host'] = '';
-$config['email']['smtp_port'] = '';
-$config['email']['smtp_user'] = '';
-$config['email']['smtp_pass'] = '';
+    /*
+     * EMAIL settings.
+     */
 
-/*
- * Basic email settings
- */
-$config['email']['from'] = 'webhook@' . $_SERVER['SERVER_NAME'];
-$config['email']['to'] = '';
-$config['email']['subject'] = 'Flagged Webhook Event';
+    /*
+     * SMTP disabled by default. Set to 1 to enable.
+     */
+    'email' => [
 
-/*
- * DATABASE Settings for DB logging
- */
-$config['db_host'] = '';
-$config['db_user'] = '';
-$config['db_pass'] = '';
-$config['db_name'] = '';
+        /*
+         * SMTP settings
+         */
+        'use_smtp' => 0,
+        'smtp_host' => '',
+        'smtp_port' => '',
+        'smtp_user' => '',
+        'smpt_pass' => '',
 
-$config['db'] = new PDO("mysql:host={$config['db_host']};dbname={$config['db_name']}", $config['db_user'], $config['db_pass']);
+        /*
+         * Basic email settings
+         */
+        'from' => 'webhook@' . $_SERVER['SERVER_NAME'],
+        'to' => '',
+        'subject' => 'Flagged Webhook Event'
+    ],
+
+    /*
+     * DATABASE Settings for DB logging
+     */
+    'db_host' => '',
+    'db_user' => '',
+    'db_pass' => '',
+    'db_name' => '',
+];
