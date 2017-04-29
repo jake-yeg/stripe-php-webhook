@@ -2,7 +2,7 @@
 
  //List of all event types, for verification.
 
-$event_array = array(
+return array(
     'account.updated',
     'account.application.deauthorized',
     'account.external_account.created',

@@ -8,7 +8,7 @@ require_once('webhookclass.php');
 
 require_once($config['stripe_path']);
 
-require_once('eventarray.php');
+$event_array = require_once('eventarray.php');
 
 if($config['log_type'] === 1){
     $config['db'] = new PDO("mysql:host={$config['db_host']};dbname={$config['db_name']}", $config['db_user'], $config['db_pass']);
