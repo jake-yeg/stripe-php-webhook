@@ -60,7 +60,7 @@ $event_array = array(
     'payout.created',
     'payout.updated',
     'payout.paid',
-    'payout.failed'
+    'payout.failed',
     'plan.created',
     'plan.deleted',
     'plan.updated',
