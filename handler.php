@@ -3,11 +3,8 @@
  *  Set path to stripe lib
  */
 $config = require_once('webhook_config.php');
-
 require_once('webhookclass.php');
-
 require_once($config['stripe_path']);
-
 $event_array = require_once('eventarray.php');
 
 if($config['log_type'] === 1){
@@ -20,28 +17,71 @@ if($config['log_type'] === 1){
  *  Validate the event(ensure it is coming from stripe, and not a third party event.)
  */
 $input = @file_get_contents("php://input");
-$event_json = json_decode($input);
-$event = \Stripe\Event::retrieve($event_json->id);
 
-$event_type = $event->type;
-/*
- * replace '.' in the event type with _ to suit function naming conventions.
- */
-if(in_array($event_type, $event_array)) {
-    $event_type = str_replace('.', '_', $event_type);
+if($config['verification']['enabled'] === 0){
+    $event_json = json_decode($input);
+    $event = \Stripe\Event::retrieve($event_json->id);
 
-    $webhook = new Webhook($config, $event);
+    $event_type = $event->type;
+    /*
+     * replace '.' in the event type with _ to suit function naming conventions.
+     */
+    if(in_array($event_type, $event_array)) {
+        $event_type = str_replace('.', '_', $event_type);
 
-    $isNewEvent = $webhook->isNewEvent($event->id);
+        $webhook = new Webhook($config, $event);
 
-    if($isNewEvent === false){
+        $isNewEvent = $webhook->isNewEvent($event->id);
+
+        if($isNewEvent === false){
+            http_response_code(200);
+            exit;
+        }else if($isNewEvent === true){
+            ob_start();
+            $webhook->{$event_type}();
+        }
+    }else{
         http_response_code(200);
         exit;
-    }else if($isNewEvent === true){
-        ob_start();
-        $webhook->{$event_type}();
+    }
+}else if($config['verification']['enabled'] === 1){
+    $signature = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+
+    try{
+        $event = \Stripe\Webhook::constructEvent($input,$signature,$config['verification']['code']);
+
+        $event_type = $event->type;
+        /*
+         * replace '.' in the event type with _ to suit function naming conventions.
+         */
+        if(in_array($event_type, $event_array)) {
+            $event_type = str_replace('.', '_', $event_type);
+
+            $webhook = new Webhook($config, $event);
+
+            $isNewEvent = $webhook->isNewEvent($event->id);
+
+            if($isNewEvent === false){
+                http_response_code(200);
+                exit;
+            }else if($isNewEvent === true){
+                ob_start();
+                $webhook->{$event_type}();
+            }
+        }else{
+            http_response_code(200);
+            exit;
+        }
+    }catch(\UnexpectedValueException $e) {
+        // Invalid payload
+        http_response_code(400); // PHP 5.4 or greater
+        exit();
+    } catch(\Stripe\Error\SignatureVerification $e) {
+        // Invalid signature
+        http_response_code(400); // PHP 5.4 or greater
+        exit();
     }
 }else{
     http_response_code(200);
-    exit;
+    exit();
 }

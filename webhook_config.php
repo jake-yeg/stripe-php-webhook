@@ -13,6 +13,18 @@ return [
     'stripe_path' => '/path/to/stripe/init.php',
 
     /*
+     *  Verification Code settings:
+     *  To enable set to 1, and place your wh_secret inside of the 'secret' declaration.
+     *  To verify by retrieving the event set to 0
+     *  Default 0
+     */
+
+    'verification' => [
+        'enabled' => 0,
+        'secret' => ''
+    ],
+
+    /*
      * Debug settings:
      * To enable set to 1
      * To disable set to 0
