@@ -18,10 +18,7 @@ if($config['log_type'] === 1){
  */
 $input = @file_get_contents("php://input");
 
-if($config['verification']['enabled'] === 0){
-    $event_json = json_decode($input);
-    $event = \Stripe\Event::retrieve($event_json->id);
-
+function handleEvent($event, $event_array, $config){
     $event_type = $event->type;
     /*
      * replace '.' in the event type with _ to suit function naming conventions.
@@ -44,41 +41,28 @@ if($config['verification']['enabled'] === 0){
         http_response_code(200);
         exit;
     }
+}
+
+if($config['verification']['enabled'] === 0){
+    $event_json = json_decode($input);
+    $event = \Stripe\Event::retrieve($event_json->id);
+
+    handleEvent($event, $event_array, $config);
 }else if($config['verification']['enabled'] === 1){
     $signature = $_SERVER['HTTP_STRIPE_SIGNATURE'];
 
     try{
         $event = \Stripe\Webhook::constructEvent($input,$signature,$config['verification']['code']);
 
-        $event_type = $event->type;
-        /*
-         * replace '.' in the event type with _ to suit function naming conventions.
-         */
-        if(in_array($event_type, $event_array)) {
-            $event_type = str_replace('.', '_', $event_type);
+        handleEvent($event, $event_array, $config);
 
-            $webhook = new Webhook($config, $event);
-
-            $isNewEvent = $webhook->isNewEvent($event->id);
-
-            if($isNewEvent === false){
-                http_response_code(200);
-                exit;
-            }else if($isNewEvent === true){
-                ob_start();
-                $webhook->{$event_type}();
-            }
-        }else{
-            http_response_code(200);
-            exit;
-        }
     }catch(\UnexpectedValueException $e) {
-        // Invalid payload
-        http_response_code(400); // PHP 5.4 or greater
+
+        http_response_code(400);
         exit();
     } catch(\Stripe\Error\SignatureVerification $e) {
-        // Invalid signature
-        http_response_code(400); // PHP 5.4 or greater
+
+        http_response_code(400);
         exit();
     }
 }else{
