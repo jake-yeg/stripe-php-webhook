@@ -44,10 +44,14 @@ function handleEvent($event, $event_array, $config){
 }
 
 if($config['verification']['enabled'] === 0){
-    $event_json = json_decode($input);
-    $event = \Stripe\Event::retrieve($event_json->id);
+    try {
+        $event_json = json_decode($input);
+        $event = \Stripe\Event::retrieve($event_json->id);
 
-    handleEvent($event, $event_array, $config);
+        handleEvent($event, $event_array, $config);
+    }catch(\Exception $e){
+        error_log($e);
+    }
 }else if($config['verification']['enabled'] === 1){
     $signature = $_SERVER['HTTP_STRIPE_SIGNATURE'];
 

@@ -522,7 +522,10 @@ class Webhook
 
     private function log(){
         if($this->config['debug'] === 1){
-            $filename = $this->config['log_path'] . date("d-m-Y") . '/' . $this->event->type . '-' . date("H-i-s") . '.txt';
+            if(!file_exists($this->config['log_path'] . date("d-m-Y") . '/' . date("H-i-s") . '-' . $this->event->type . '.txt')){
+                mkdir($this->config['log_path'] . date("d-m-Y") . '/');
+            }
+            $filename = $this->config['log_path'] . date("d-m-Y") . '/' . date("H-i-s") . '-' . $this->event->type . '.txt';
             file_put_contents($filename, $this->event);
         }
         //0 corresponds to no logging.

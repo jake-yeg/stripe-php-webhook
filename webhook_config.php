@@ -3,7 +3,7 @@
 return [
 
     /*
-     * Stripe API Key,
+     * Stripe Secret API Key,
      */
     'api_key' => '',
 
@@ -39,6 +39,7 @@ return [
      */
 
     'log_type' => 0,
+    'log_path' => '',
 
     /*
      *  THIS SECTION REQUIRES THE PHPMAILER LIBRARY FOUND HERE:
