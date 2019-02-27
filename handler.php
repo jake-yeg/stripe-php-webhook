@@ -1,6 +1,6 @@
 <?php
 /*
- *  Set path to stripe lib
+ *  Set path to stripe lib in webhook_config.php
  */
 $config = require_once('webhook_config.php');
 require_once('webhookclass.php');
