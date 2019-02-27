@@ -100,6 +100,12 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function charge_expired(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function charge_failed(){
         $this->log();
