@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS webhook_logs (
   
   event_type VARCHAR(255) NOT NULL,
   
-  date DATETIME DEFAULT now()
+  date TIMESTAMP DEFAULT now()
   
 );
 
