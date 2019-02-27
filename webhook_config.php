@@ -77,7 +77,7 @@ return [
         'smtp_host' => '',
         'smtp_port' => '',
         'smtp_user' => '',
-        'smpt_pass' => '',
+        'smtp_pass' => '',
 
         /*
          * Basic email settings
