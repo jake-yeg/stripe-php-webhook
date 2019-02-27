@@ -286,6 +286,12 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function invoice_upcoming(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function invoice_updated(){
         $this->log();
