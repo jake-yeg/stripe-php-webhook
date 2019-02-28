@@ -2,7 +2,7 @@
 
 SETUP:
 
-1) Place the 3 files into the same folder in your desired web directory.
+1) Place the 4 files into the same folder in your desired web directory.
 
 2) Edit webhook_config.php as desired
 
