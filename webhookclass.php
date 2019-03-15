@@ -346,6 +346,30 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function payment_intent_amount_capturable_updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function payment_intent_created(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function payment_intent_payment_failed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function payment_intent_succeeded(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function payout_paid(){
         $this->log();
