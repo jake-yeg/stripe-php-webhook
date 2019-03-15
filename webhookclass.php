@@ -412,6 +412,24 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function person_created(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function person_deleted(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function person_updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function plan_created(){
         $this->log();
@@ -448,6 +466,24 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function reporting_report_run_failed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function reporting_report_run_succeeded(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function reporting_report_type_updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function review_closed(){
         $this->log();
@@ -456,6 +492,12 @@ class Webhook
     }
 
     public function review_opened(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function sigma_scheduled_query_run_created(){
         $this->log();
         http_response_code(200);
         ob_end_flush();
