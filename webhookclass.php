@@ -166,6 +166,18 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function checkout_session_completed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function checkout_beta_session_succeeded(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function coupon_created(){
         $this->log();
