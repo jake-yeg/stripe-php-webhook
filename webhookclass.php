@@ -502,6 +502,78 @@ class Webhook
         http_response_code(200);
         ob_end_flush();
     }
+    
+    public function subscription_schedule_aborted(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_canceled(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_completed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_created(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_expiring(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_released(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function subscription_schedule_updated(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function topup_canceled(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function topup_created(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function topup_failed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function topup_reversed(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
+    
+    public function topup_succeeded(){
+        $this->log();
+        http_response_code(200);
+        ob_end_flush();
+    }
 
     public function transfer_created(){
         $this->log();
