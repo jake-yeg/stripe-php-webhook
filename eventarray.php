@@ -28,6 +28,8 @@ return array(
     'charge.dispute.funds_reinstated',
     'charge.dispute.funds_withdrawn',
     'charge.dispute.updated',
+    'checkout.session.completed',
+    'checkout_beta.session_succeeded',
     'coupon.created',
     'coupon.deleted',
     'coupon.updated',
